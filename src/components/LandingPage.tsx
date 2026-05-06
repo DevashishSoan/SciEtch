@@ -1,5 +1,5 @@
-import React, { useEffect, useRef } from 'react';
 import { ParticleCanvas, HeroSignatureInteraction, FeatureVisualization } from './LandingComponents';
+import InfoModal from './InfoModal';
 
 interface LandingPageProps {
   onLaunch: () => void;
@@ -9,6 +9,57 @@ export default function LandingPage({ onLaunch }: LandingPageProps) {
   const ambientRef = useRef<HTMLDivElement>(null);
   const heroCardRef = useRef<HTMLDivElement>(null);
   const heroSectionRef = useRef<HTMLElement>(null);
+  const [modalData, setModalData] = React.useState<{ isOpen: boolean; title: string; content: string; category: string }>({
+    isOpen: false, title: '', content: '', category: ''
+  });
+
+  const INFO_CONTENT: Record<string, { title: string; category: string; content: string }> = {
+    'AI Synthesis': {
+      category: 'Product',
+      title: 'Neural Synthesis Engine',
+      content: 'SciEtch utilizes a proprietary neural synthesis pipeline to transform raw scientific abstracts into structured topological maps. By identifying experimental variables, methodology sequences, and causal relationships, our engine auto-generates diagrams that adhere to global academic publishing standards.\n\nOur system currently supports multi-domain modeling across Biology, Chemistry, Physics, and Computational Sciences.'
+    },
+    'Cloud Sync': {
+      category: 'Product',
+      title: 'Real-Time Data Persistence',
+      content: 'Never lose a schematic again. SciEtch integrates directly with Google Workspace via a secure Webhook uplink. This allows for real-time synchronization of your research entities, edges, and metadata directly into a Google Sheet of your choice.\n\nThis "Zero-Code" bridge ensures that your data remains accessible for audit trails and collaborative review.'
+    },
+    'Export Suite': {
+      category: 'Product',
+      title: 'High-Fidelity Rendering',
+      content: 'From abstract to figure in 60 seconds. Our export suite is designed specifically for high-impact journal submissions. We support 300 DPI lossless PNGs, print-ready CMYK PDFs, and scalable vector SVGs.\n\nEvery export is optimized to meet the strict graphical abstract requirements of major publishers like Nature, Science, and Cell.'
+    },
+    'Protocols': {
+      category: 'Product',
+      title: 'Standardized Schematics',
+      content: 'Consistency is the backbone of science. SciEtch enforces strict design protocols for different research types. Whether you are building a Clinical Trial flowchart or a Molecular Interaction map, our platform ensures that your iconography and layout logic are scientifically accurate and universally recognizable.'
+    },
+    'About Us': {
+      category: 'Company',
+      title: 'The SciEtch Vision',
+      content: 'SciEtch was founded by Devashish Soan to bridge the gap between complex academic research and high-quality visual communication. We believe that a researcher\'s time should be spent on discovery, not on fighting with design software.\n\nOur mission is to create the world\'s first AI-native Operating System for scientific visualization.'
+    },
+    'Mission': {
+      category: 'Company',
+      title: 'Our Research Mission',
+      content: 'We are committed to democratizing high-end scientific visualization. Our mission is to provide every lab, regardless of funding size, with the tools to create professional-grade figures that enhance the readability and impact of their research.\n\nWe prioritize open data standards and integrity-first AI development.'
+    },
+    'Security': {
+      category: 'Company',
+      title: 'Security & Integrity',
+      content: 'Your research is your most valuable asset. SciEtch employs AES-256 encryption for all data transmissions and utilizes a decentralized authentication protocol. We never store your raw abstract data on our servers longer than necessary for the synthesis process.\n\nOur "Neural Link" system ensures that only authorized researchers can access project schematics.'
+    },
+    'Privacy': {
+      category: 'Company',
+      title: 'Privacy Protocol',
+      content: 'We adhere to a strict "Science-First" privacy policy. We do not track individual research patterns for commercial advertising. Your synthesized models and connected Google Sheets are entirely under your control.\n\nWe are GDPR compliant and maintain a transparent data provenance log for every user.'
+    }
+  };
+
+  const openInfo = (key: string) => {
+    const data = INFO_CONTENT[key];
+    if (data) setModalData({ isOpen: true, ...data });
+  };
 
   useEffect(() => {
     // 1. Scroll Reveal Observer
@@ -292,19 +343,19 @@ export default function LandingPage({ onLaunch }: LandingPageProps) {
             <div key="Product">
               <h4 style={{ fontSize: 12, fontWeight: 700, marginBottom: 24, textTransform: 'uppercase', color: '#fff' }}>Product</h4>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-                <a href="#" className="footer-link">AI Synthesis</a>
-                <a href="#" className="footer-link">Cloud Sync</a>
-                <a href="#" className="footer-link">Export Suite</a>
-                <a href="#" className="footer-link">Protocols</a>
+                <button onClick={() => openInfo('AI Synthesis')} className="footer-link" style={{ background: 'none', border: 'none', padding: 0, textAlign: 'left', cursor: 'pointer' }}>AI Synthesis</button>
+                <button onClick={() => openInfo('Cloud Sync')} className="footer-link" style={{ background: 'none', border: 'none', padding: 0, textAlign: 'left', cursor: 'pointer' }}>Cloud Sync</button>
+                <button onClick={() => openInfo('Export Suite')} className="footer-link" style={{ background: 'none', border: 'none', padding: 0, textAlign: 'left', cursor: 'pointer' }}>Export Suite</button>
+                <button onClick={() => openInfo('Protocols')} className="footer-link" style={{ background: 'none', border: 'none', padding: 0, textAlign: 'left', cursor: 'pointer' }}>Protocols</button>
               </div>
             </div>
             <div key="Company">
               <h4 style={{ fontSize: 12, fontWeight: 700, marginBottom: 24, textTransform: 'uppercase', color: '#fff' }}>Company</h4>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-                <a href="#" className="footer-link">About Us</a>
-                <a href="#" className="footer-link">Mission</a>
-                <a href="#" className="footer-link">Security</a>
-                <a href="#" className="footer-link">Privacy</a>
+                <button onClick={() => openInfo('About Us')} className="footer-link" style={{ background: 'none', border: 'none', padding: 0, textAlign: 'left', cursor: 'pointer' }}>About Us</button>
+                <button onClick={() => openInfo('Mission')} className="footer-link" style={{ background: 'none', border: 'none', padding: 0, textAlign: 'left', cursor: 'pointer' }}>Mission</button>
+                <button onClick={() => openInfo('Security')} className="footer-link" style={{ background: 'none', border: 'none', padding: 0, textAlign: 'left', cursor: 'pointer' }}>Security</button>
+                <button onClick={() => openInfo('Privacy')} className="footer-link" style={{ background: 'none', border: 'none', padding: 0, textAlign: 'left', cursor: 'pointer' }}>Privacy</button>
               </div>
             </div>
             <div key="Connect">
@@ -331,6 +382,14 @@ export default function LandingPage({ onLaunch }: LandingPageProps) {
           </div>
         </div>
       </footer>
+
+      <InfoModal 
+        isOpen={modalData.isOpen}
+        onClose={() => setModalData(prev => ({ ...prev, isOpen: false }))}
+        title={modalData.title}
+        content={modalData.content}
+        category={modalData.category}
+      />
     </div>
   );
 }
