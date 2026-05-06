@@ -58,6 +58,16 @@ body {
 .nav-links a:hover { color: #fff; }
 
 /* ── Reveal Animations ── */
+.footer-link {
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+.footer-link:hover {
+    color: #fff;
+    transform: translateX(4px);
+}
 .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); will-change: opacity, transform; }
 .reveal.active { opacity: 1; transform: translateY(0); }
 
