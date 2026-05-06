@@ -226,6 +226,26 @@ export default function LandingPage({ onLaunch }: LandingPageProps) {
           </div>
         </section>
 
+        {/* Research Ethics Section */}
+        <section style={{ padding: '80px 0', borderTop: '1px solid var(--border2)', background: 'rgba(255,255,255,0.01)' }}>
+          <div className="wrap">
+            <div className="reveal" style={{ display: 'flex', alignItems: 'center', gap: 40, flexWrap: 'wrap' }}>
+              <div style={{ flex: 1, minWidth: 300 }}>
+                <span className="eyebrow">Academic Integrity</span>
+                <h2 style={{ fontSize: 28, color: '#fff', marginBottom: 20 }}>Upholding the <span className="serif" style={{ color: 'var(--mint)' }}>Gold Standard</span> of Research.</h2>
+                <p style={{ color: 'var(--muted)', lineHeight: 1.6 }}>SciEtch is built with a deep respect for scientific data provenance. Every synthesized node maintains a metadata link to its source abstract, ensuring that your visual methodology remains a true reflection of your peer-reviewed findings.</p>
+              </div>
+              <div style={{ display: 'flex', gap: 20, flexWrap: 'wrap' }}>
+                {['Peer-Reviewed', 'Provenance-Locked', 'Ethics-Aligned'].map(t => (
+                  <div key={t} style={{ padding: '12px 20px', background: 'var(--panel)', border: '1px solid var(--border)', borderRadius: 12, fontSize: 11, fontWeight: 700, color: '#fff', fontFamily: 'Geist Mono' }}>
+                    {t.toUpperCase()}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Pricing Section */}
         <section id="pricing" style={{ padding: '160px 0' }}>
           <div className="wrap">
@@ -269,16 +289,33 @@ export default function LandingPage({ onLaunch }: LandingPageProps) {
               </a>
               <p style={{ fontSize: 14, color: 'var(--muted)', maxWidth: 280 }}>The AI-native platform for transforming complex research into publication-ready figures.</p>
             </div>
-            {['Product', 'Company', 'Connect'].map((h, i) => (
-              <div key={i}>
-                <h4 style={{ fontSize: 12, fontWeight: 700, marginBottom: 24, textTransform: 'uppercase', color: '#fff' }}>{h}</h4>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-                  <a href="#" className="footer-link" style={{ textDecoration: 'none', color: 'var(--muted)', fontSize: 14 }}>Overview</a>
-                  <a href="#" className="footer-link" style={{ textDecoration: 'none', color: 'var(--muted)', fontSize: 14 }}>Mission</a>
-                  <a href="#" className="footer-link" style={{ textDecoration: 'none', color: 'var(--muted)', fontSize: 14 }}>Security</a>
-                </div>
+            <div key="Product">
+              <h4 style={{ fontSize: 12, fontWeight: 700, marginBottom: 24, textTransform: 'uppercase', color: '#fff' }}>Product</h4>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+                <a href="#" className="footer-link">AI Synthesis</a>
+                <a href="#" className="footer-link">Cloud Sync</a>
+                <a href="#" className="footer-link">Export Suite</a>
+                <a href="#" className="footer-link">Protocols</a>
               </div>
-            ))}
+            </div>
+            <div key="Company">
+              <h4 style={{ fontSize: 12, fontWeight: 700, marginBottom: 24, textTransform: 'uppercase', color: '#fff' }}>Company</h4>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+                <a href="#" className="footer-link">About Us</a>
+                <a href="#" className="footer-link">Mission</a>
+                <a href="#" className="footer-link">Security</a>
+                <a href="#" className="footer-link">Privacy</a>
+              </div>
+            </div>
+            <div key="Connect">
+              <h4 style={{ fontSize: 12, fontWeight: 700, marginBottom: 24, textTransform: 'uppercase', color: '#fff' }}>Connect</h4>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+                <a href="https://github.com/DevashishSoan/SciEtch" className="footer-link">GitHub</a>
+                <a href="#" className="footer-link">Discord</a>
+                <a href="#" className="footer-link">Twitter</a>
+                <a href="#" className="footer-link">Support</a>
+              </div>
+            </div>
           </div>
           <div style={{ marginTop: 80, paddingTop: 40, borderTop: '1px solid var(--border2)', display: 'flex', justifyContent: 'space-between', fontSize: 12, color: 'var(--muted)', fontFamily: 'Geist Mono', flexWrap: 'wrap', gap: 16 }}>
             <span>© 2026 SciEtch Research Platform. All rights reserved.</span>

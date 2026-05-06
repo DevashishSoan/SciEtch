@@ -294,6 +294,15 @@ export default function App() {
     if (format.includes('PNG')) exportToPNG(nodes, edges, title);
     else if (format.includes('PDF')) exportToPDF(nodes, edges, title);
     else if (format.includes('SVG')) exportToSVG(nodes, edges, title);
+    else if (format === 'JSON_SOURCE') {
+      const data = JSON.stringify({ title, nodes, edges }, null, 2);
+      const blob = new Blob([data], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `${title.replace(/\s+/g, '_')}_source.json`;
+      a.click();
+    }
   }, [nodes, edges, title]);
 
   useEffect(() => {

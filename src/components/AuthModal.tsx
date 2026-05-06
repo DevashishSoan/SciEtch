@@ -13,9 +13,11 @@ export default function AuthModal({ onClose, onSuccess }: AuthModalProps) {
   const [name, setName] = useState('');
   const [institution, setInstitution] = useState('');
   const [loading, setLoading] = useState(false);
+  const [acceptedTerms, setAcceptedTerms] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!isLogin && !acceptedTerms) return;
     setLoading(true);
     // Simulate Google Sheets Auth / API call
     setTimeout(() => {
@@ -55,12 +57,11 @@ export default function AuthModal({ onClose, onSuccess }: AuthModalProps) {
         <div className="hud-bracket hud-br" style={{ position: 'absolute', bottom: 12, right: 12 }} />
 
         <div style={{ textAlign: 'center', marginBottom: 32 }}>
-          <div style={{ 
-            width: 56, height: 56, background: 'linear-gradient(135deg, var(--royal), var(--mint))', 
-            borderRadius: 14, display: 'flex', alignItems: 'center', justifyContent: 'center', 
-            margin: '0 auto 20px auto', fontSize: 28, fontWeight: 900, color: '#fff',
+          <img src="/logo.png" alt="SciEtch" style={{ 
+            width: 56, height: 56, borderRadius: 14, 
+            margin: '0 auto 20px auto', 
             boxShadow: '0 8px 24px rgba(96, 69, 244, 0.4)'
-          }}>S</div>
+          }} />
           <h2 style={{ fontSize: 24, fontWeight: 800, color: '#fff', marginBottom: 8, letterSpacing: '-0.02em' }}>
             {isLogin ? 'Neural Link Initialized' : 'Create Research Identity'}
           </h2>
@@ -93,10 +94,26 @@ export default function AuthModal({ onClose, onSuccess }: AuthModalProps) {
               <input required value={institution} onChange={e => setInstitution(e.target.value)} type="text" placeholder="MIT / CERN / Independent" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid var(--border2)', borderRadius: 12, padding: '14px 16px', color: '#fff', fontSize: 14, outline: 'none' }} />
             </div>
           )}
+          
+          {!isLogin && (
+            <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginTop: 4 }}>
+              <input 
+                type="checkbox" 
+                id="tc"
+                required
+                checked={acceptedTerms}
+                onChange={e => setAcceptedTerms(e.target.checked)}
+                style={{ cursor: 'pointer', accentColor: 'var(--mint)', width: 16, height: 16 }}
+              />
+              <label htmlFor="tc" style={{ fontSize: 11, color: 'var(--muted)', cursor: 'pointer' }}>
+                I agree to the <span style={{ color: 'var(--mint)', fontWeight: 700 }}>Terms of Protocol</span> and Research Integrity standards.
+              </label>
+            </div>
+          )}
 
           <button 
             type="submit" 
-            disabled={loading}
+            disabled={loading || (!isLogin && !acceptedTerms)}
             className="btn btn-p" 
             style={{ marginTop: 12, width: '100%', height: 50, borderRadius: 12, fontSize: 14, fontWeight: 800, position: 'relative' }}
           >

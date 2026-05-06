@@ -27,7 +27,7 @@ interface TopBarProps {
   onSettingsClick: () => void;
 }
 
-const EXPORT_FORMATS = ['PNG (300 DPI)', 'PDF (Print)', 'SVG (Vector)'];
+const EXPORT_FORMATS = ['PNG_300DPI', 'PDF_PRINT', 'SVG_VECTOR', 'JSON_SOURCE'];
 
 export default function TopBar({ 
   title, onTitleChange, activeTool, onToolChange, onIngestClick, 
@@ -113,6 +113,7 @@ export default function TopBar({
               <button
                 key={tool}
                 onClick={() => onToolChange(tool)}
+                title={`${tool.toUpperCase()}_PROTOCOL`}
                 style={{
                   width: 36, height: 36, border: 'none', borderRadius: 8,
                   background: activeTool === tool ? 'rgba(83, 230, 212, 0.1)' : 'transparent',
