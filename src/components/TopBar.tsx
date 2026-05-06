@@ -76,7 +76,7 @@ export default function TopBar({
         {/* LEFT ZONE: Brand & Title */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 16, minWidth: 300, flexShrink: 1 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 12, flexShrink: 0 }}>
-            <div style={{ width: 32, height: 32, background: 'linear-gradient(135deg, var(--royal), var(--mint))', borderRadius: 8, display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontWeight: 800, fontSize: 16, boxShadow: '0 4px 12px rgba(96, 69, 244, 0.3)' }}>S</div>
+            <img src="/logo.png" alt="SciEtch" style={{ width: 32, height: 32, borderRadius: 8, boxShadow: '0 4px 12px rgba(96, 69, 244, 0.3)', objectFit: 'cover' }} />
             <span className="desktop-only" style={{ fontWeight: 800, fontSize: 18, color: '#fff', letterSpacing: '-0.02em' }}>SciEtch</span>
           </div>
           

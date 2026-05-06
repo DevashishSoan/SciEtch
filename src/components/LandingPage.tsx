@@ -94,7 +94,7 @@ export default function LandingPage({ onLaunch }: LandingPageProps) {
         padding: '0 28px', boxShadow: '0 10px 40px rgba(0,0,0,0.5)'
       }}>
         <a href="#" className="logo" aria-label="SciEtch Home">
-          <div className="logo-symbol">S</div>
+          <img src="/logo.png" alt="" style={{ width: 32, height: 32, borderRadius: 8, marginRight: 12 }} />
           SciEtch
         </a>
         <div className="nav-links" style={{ display: 'flex', gap: '32px' }}>
@@ -264,7 +264,7 @@ export default function LandingPage({ onLaunch }: LandingPageProps) {
           <div className="footer-grid">
             <div>
               <a href="#" className="logo" style={{ marginBottom: 24, display: 'inline-flex' }}>
-                <div className="logo-symbol">S</div>
+                <img src="/logo.png" alt="" style={{ width: 32, height: 32, borderRadius: 8, marginRight: 12 }} />
                 SciEtch
               </a>
               <p style={{ fontSize: 14, color: 'var(--muted)', maxWidth: 280 }}>The AI-native platform for transforming complex research into publication-ready figures.</p>
