@@ -1,0 +1,454 @@
+
+SCIETCH
+Academic Graphical Abstract Builder
+Product Requirements Document
+
+Document Version
+1.0 — Initial Release
+Status
+Draft — For Stakeholder Review
+Prepared By
+Product & Engineering Team
+Date
+April 28, 2026
+Audience
+Founders, Engineering, Design, Investors
+Classification
+CONFIDENTIAL
+
+Vision Statement:  SciEtch is the fastest, most constrained design tool built exclusively for academic researchers — turning a raw abstract into a publication-ready graphical schematic in under 60 seconds.
+
+1. Executive Summary
+SciEtch solves a persistent pain point in academic publishing: researchers produce ground-breaking science but lack the time or design skills to create the high-quality graphical abstracts increasingly required by journals (Cell, Nature, Science, ACS), preprint servers (arXiv, bioRxiv), and open-access repositories (Zenodo, OSF).
+
+Existing tools — Adobe Illustrator, Canva, BioRender — are either too broad, too expensive, or locked behind institutional licenses. SciEtch is ruthlessly focused: paste an abstract, let the AI extract the key methodology, customize a generated schematic, and export a print-resolution PDF — all in one workflow.
+
+Market Opportunity:  Over 3 million peer-reviewed papers are published per year. More than 70% of top-tier journals now mandate or strongly encourage graphical abstracts. The TAM for design tooling in academic publishing exceeds $1.2B globally.
+
+2. Problem Statement
+2.1 Core Pain Points
+Researchers spend 3–8 hours on a single graphical abstract using general-purpose tools not designed for science.
+BioRender is expensive ($35–$99/mo), biology-centric, and lacks NLP-driven layout generation.
+Canva and PowerPoint produce graphical abstracts that look amateurish next to peer-reviewed publication standards.
+arXiv, Zenodo, and journal submission portals have strict file-size and resolution requirements that most researchers don't know how to meet.
+Collaborating PI and postdoc on figure iterations involves emailing .pptx files back and forth — no version control, no commenting.
+
+2.2 User Frustration Snapshot
+Researcher Quote (interviews):  "I spent an entire Sunday afternoon moving boxes around in Illustrator just to make one figure for the journal submission. The science took two years — the figure took longer than it should."
+
+PI Quote:  "We reject Canva graphics immediately — they look unprofessional. But we don't have time to teach every grad student Illustrator."
+
+3. Product Overview
+3.1 Product Name & Tagline
+Product Name
+SciEtch
+Tagline
+From Abstract to Figure in 60 Seconds.
+Product Type
+SaaS Web Application (B2C / B2I)
+Primary URL
+app.scietchy.io (proposed)
+Target Devices
+Desktop-first (Chrome, Firefox, Safari, Edge); tablet secondary
+
+3.2 Core Value Proposition
+NLP-powered abstract parsing extracts methodology, variables, and process flow automatically.
+Opinionated, journal-compliant layout templates — no blank canvas paralysis.
+Drag-and-drop scientific component library (flowchart nodes, molecule placeholders, microscopy frames, data flow arrows, statistical annotation boxes).
+One-click export to high-resolution PDF, PNG (300dpi), and SVG, with journal-preset profiles (Nature, ACS, Elsevier, APA).
+Real-time collaboration with inline comments — no file attachments.
+
+4. Target Users & Personas
+
+Persona
+Role
+Primary Goal
+Key Frustration
+The Postdoc
+Postdoctoral researcher
+Submit to high-impact journal fast
+No time; no design budget
+The PI
+Principal Investigator
+Ensure lab output looks professional
+Students produce low-quality figures
+The PhD Student
+Graduate researcher, yr 2–5
+Pass qualifying figure requirements
+Illustrator learning curve too steep
+The Lab Manager
+Admin / Core Facility
+Standardize figure style across lab
+No template enforcing house style
+The Librarian
+University library / repository
+Help researchers deposit with correct assets
+Researchers submit wrong file formats
+
+5. User Stories & Acceptance Criteria
+5.1 Abstract Ingestion & NLP Parsing
+As a researcher, I want to paste my abstract and have the app identify the core methodology, inputs, outputs, and key steps, so that I don't have to manually create a flowchart from scratch.
+AC: Parser extracts ≥3 distinct process nodes from any 150–300 word abstract within 8 seconds.
+AC: Confidence score shown per extracted node; user can edit/reject any node before layout generation.
+AC: Parser works on abstracts from biology, chemistry, physics, CS, and social sciences.
+
+5.2 Layout & Schematic Generation
+As a user, I want to see a clean, structured schematic generated automatically from my parsed nodes, so I have a professional starting point rather than a blank canvas.
+AC: Layout renders within 3 seconds of parsing confirmation.
+AC: Generated schematic adheres to one of five layout templates (linear flow, cyclic process, hierarchical, comparison, hybrid).
+AC: All generated elements snap to an invisible grid; no overlapping boxes on initial render.
+
+5.3 Drag-and-Drop Component Editor
+As a researcher, I want to customize the generated schematic using a scientific component palette, so I can add domain-specific visuals without learning Illustrator.
+AC: Component library contains ≥50 components across categories: flowchart, biology, chemistry, data/stats, physics.
+AC: Components snap to grid with 8px precision.
+AC: Undo/redo supports ≥30 steps.
+AC: Text inside any component is editable with inline click.
+
+5.4 Export
+As a researcher, I want to download my schematic as a high-resolution PDF or PNG ready for journal submission, so I don't have to worry about DPI or file size limits.
+AC: PDF export at 300 DPI minimum; file size ≤5MB for a standard abstract figure.
+AC: PNG export at 300 DPI with transparent background option.
+AC: SVG export for vector editing in downstream tools.
+AC: Journal preset profiles (Nature, ACS, Elsevier) enforce correct dimensions and color modes automatically.
+
+5.5 Collaboration
+As a PI, I want to leave inline comments on a shared figure, so I can give feedback without emailing files back and forth.
+AC: Share link generates in <2 seconds; no account required for comment-only access.
+AC: Inline comments pin to individual components; resolved comments archived.
+AC: Version history stores up to 20 snapshots per figure.
+
+6. Feature Requirements
+6.1 Priority Matrix
+Feature
+Priority
+Complexity
+Release
+Abstract paste + NLP extraction
+P0 — Critical
+High
+v1.0
+5 layout template engine
+P0 — Critical
+High
+v1.0
+Drag-and-drop editor (basic)
+P0 — Critical
+High
+v1.0
+Component library (≥50 items)
+P0 — Critical
+Medium
+v1.0
+PDF / PNG export (300 DPI)
+P0 — Critical
+Medium
+v1.0
+User accounts + project save
+P0 — Critical
+Low
+v1.0
+Journal preset profiles
+P1 — Important
+Medium
+v1.1
+Real-time collaboration
+P1 — Important
+High
+v1.1
+Version history (20 snapshots)
+P1 — Important
+Medium
+v1.1
+SVG export
+P1 — Important
+Low
+v1.1
+Team workspaces (lab groups)
+P2 — Nice
+Medium
+v2.0
+Custom component upload
+P2 — Nice
+Medium
+v2.0
+Citation / reference panel
+P2 — Nice
+Low
+v2.0
+AI style suggestions
+P3 — Future
+High
+v3.0
+Animated figure (GIF) export
+P3 — Future
+High
+v3.0
+
+7. Technical Architecture
+7.1 High-Level Stack
+Layer
+Technology
+Rationale
+Frontend Framework
+React 19 + TypeScript
+Component model ideal for canvas editor
+Canvas / Editor
+Konva.js + React-Konva
+GPU-accelerated 2D canvas; mature drag-drop
+State Management
+Zustand
+Lightweight, no boilerplate for editor state
+UI Components
+Tailwind CSS + Radix UI
+Accessible primitives; no opinionated styles
+NLP Pipeline
+Python 3.11 + FastAPI
+Async API; easy scikit/spaCy integration
+NLP Model
+spaCy + custom NER (fine-tuned)
+Lightweight; no GPU inference required
+Export Engine
+Puppeteer (PDF) + Sharp (PNG)
+Headless Chrome PDF; Sharp for raster
+Database
+PostgreSQL (Supabase)
+Row-level security; real-time subscriptions
+Auth
+Supabase Auth (OAuth + email)
+Google / ORCID SSO for researchers
+File Storage
+Supabase Storage (S3-compatible)
+Figure assets, exports, component library
+Real-time Collab
+Supabase Realtime (WebSockets)
+Presence + cursor sync for co-editing
+Hosting — Frontend
+Vercel
+Edge network; zero-config React deployments
+Hosting — API
+Railway / Render (Docker)
+Python container hosting; auto-scale
+CDN
+Cloudflare
+Asset caching; DDoS protection
+
+7.2 NLP Pipeline Detail
+The text extraction pipeline runs as a stateless Python microservice exposed over REST:
+
+Input: Raw abstract text (UTF-8, 50–600 words).
+Step 1 — Sentence segmentation: spaCy en_core_web_sm pipeline.
+Step 2 — Entity recognition: custom NER model fine-tuned on 12,000 annotated scientific abstracts across 6 disciplines. Labels: METHOD, VARIABLE, ORGANISM, INSTRUMENT, DATASET, OUTCOME.
+Step 3 — Relation extraction: dependency parsing identifies subject-verb-object triples linking entities into process edges.
+Step 4 — Layout scoring: a heuristic scorer maps extracted triples to one of five layout archetypes (linear, cyclic, hierarchical, comparison, hybrid) based on edge topology.
+Step 5 — JSON output: nodes (id, label, type, confidence) + edges (source, target, label) returned to React frontend for rendering.
+
+Performance Target:  End-to-end pipeline latency < 3 seconds (p95) for abstracts up to 400 words, measured at the FastAPI endpoint under normal load.
+
+7.3 Canvas Editor Architecture
+The editor is a React component tree with a Zustand store managing the full figure state (nodes, edges, styles, history stack).
+Each component in the figure is a Konva.Group containing a shape layer and a text layer; all transforms are stored as normalized relative coordinates (0–1 space) and mapped to canvas pixels at render time to support responsive resizing.
+Undo/redo is implemented as an immutable history array with a cursor pointer; each mutation pushes a new state snapshot. The stack is capped at 30 entries to bound memory.
+Export is triggered by serializing the Konva stage to a data URI, then sending it to the backend export service (Puppeteer for PDF, Sharp pipeline for PNG/SVG).
+
+8. Design Principles & UX Constraints
+8.1 The Three Constraints (Product Philosophy)
+Constraint 1 — No Blank Canvas:  Users always start from a generated layout. The empty canvas is never shown. This eliminates decision paralysis and keeps output consistent.
+
+Constraint 2 — Science-Only Components:  The component library contains exclusively scientific primitives. No clip-art, no generic shapes. Every component is semantically labeled (e.g., 'Western Blot Frame', 'Decision Gate', 'Data Pipeline Arrow').
+
+Constraint 3 — Journal-First Export:  Export dialogs default to journal profiles. Users select a destination (Nature, arXiv, etc.) and the app enforces correct dimensions, color space (RGB vs CMYK), and file size automatically.
+
+8.2 UI Layout
+Left Panel — Component Library: searchable grid of scientific components, grouped by discipline. Drag onto canvas to place.
+Center — Canvas Editor: the live Konva canvas with snap-to-grid enabled by default. Toolbar floats at top: select, pan, zoom, add text, add arrow.
+Right Panel — Properties: context-sensitive panel showing fill/stroke, font, label, and component-specific options for the selected element.
+Top Bar — Export & Share: Journal preset picker, Export button, Share link generator, Version history dropdown.
+
+8.3 Accessibility & Internationalisation
+WCAG 2.1 AA compliance for all interactive UI elements outside the canvas.
+Keyboard shortcuts for all common editor actions (documented in Help overlay).
+RTL layout support for Arabic, Hebrew, Farsi (abstract text direction only; canvas is language-agnostic).
+i18n strings externalized from day one; initial launch in English only.
+
+9. Release Roadmap & Sprint Plan
+9.1 Phase Overview
+Phase
+Milestone
+Duration
+Key Deliverables
+Phase 0
+Foundation
+2 weeks
+Repo, CI/CD, Supabase project, auth shell, design system tokens
+Phase 1
+MVP Core
+6 weeks
+NLP API, layout engine, canvas editor v1, basic component library, PDF export
+Phase 2
+Beta Polish
+4 weeks
+Journal presets, 50-component library, sharing, version history, onboarding flow
+Phase 3
+Public Launch
+2 weeks
+Performance hardening, billing (Stripe), marketing site, ProductHunt launch
+Phase 4
+Growth
+Ongoing
+Real-time collab, team workspaces, additional disciplines, API access
+
+9.2 Sprint Breakdown — Phase 1 (MVP)
+Sprint
+Week
+Engineering Focus
+Sprint 1
+Wk 1–2
+FastAPI skeleton; spaCy NER training pipeline; annotated dataset v0.1 (2,000 abstracts)
+Sprint 2
+Wk 3
+React app scaffold; Zustand store; Konva canvas shell; routing
+Sprint 3
+Wk 4
+Abstract paste UI; NLP API integration; node/edge JSON to Konva renderer
+Sprint 4
+Wk 5
+Drag-and-drop component library (25 components); snap-to-grid; undo/redo
+Sprint 5
+Wk 6
+Properties panel; inline text editing; arrow routing; layout template switching
+Sprint 6
+Wk 7
+Puppeteer PDF export; Sharp PNG export; Supabase Storage integration
+Sprint 7
+Wk 8
+End-to-end QA; performance profiling; MVP user testing (10 researchers)
+
+10. Monetisation Strategy
+10.1 Pricing Tiers
+Plan
+Price
+Included
+Target
+Free
+$0 / mo
+3 figures/mo; watermarked PNG; community templates
+Student trials, casual users
+Researcher
+$12 / mo
+Unlimited figures; no watermark; all export formats; 20-version history
+Individual postdocs, PhD students
+Lab
+$49 / mo
+5 seats; team workspace; shared component library; priority support
+Research groups, small labs
+Institutional
+Custom
+SSO/SAML; unlimited seats; custom branding; SLA; API access
+Universities, publishers, journals
+
+10.2 Additional Revenue Streams
+Premium Component Packs: Discipline-specific libraries (e.g., 'Neuroscience Pack', 'Materials Science Pack') sold at $4.99 each or bundled in Lab+ plans.
+Journal Partnership Integrations: Revenue share with publishers who embed SciEtch into their submission portals.
+API Access: Programmatic figure generation for publishers automating graphical abstract creation at scale (usage-based pricing).
+
+11. Success Metrics & KPIs
+Metric
+Target (6 months post-launch)
+Measurement Method
+Monthly Active Users (MAU)
+5,000
+Supabase analytics
+Figures Created / Month
+15,000
+DB event count
+Avg. Time to First Export
+< 8 minutes
+Funnel analytics (Posthog)
+NLP Parse Accuracy (manual review)
+> 82%
+Monthly human eval (50 abstracts)
+Free-to-Paid Conversion
+> 6%
+Stripe MRR / MAU
+Net Promoter Score
+> 50
+In-app survey (Delighted)
+p95 API Latency
+< 3 seconds
+Railway metrics / Datadog
+Monthly Churn (paid)
+< 3.5%
+Stripe churn calculation
+GitHub Stars (open NER model)
+> 500
+GitHub API
+
+12. Risks & Mitigations
+Risk
+Likelihood
+Impact
+Mitigation
+NLP accuracy too low for non-English abstracts
+Medium
+High
+Phase 1 English only; multilingual NER in roadmap backlog
+BioRender launches competing NLP feature
+Medium
+High
+Differentiate on breadth (all STEM) and open-source NER model goodwill
+Journal spec changes break export presets
+Low
+Medium
+Preset definitions in versioned config files; community contribution model
+Canvas performance degradation at high component count
+Low
+High
+Virtual rendering; benchmark at >200 components during Phase 1 QA
+GDPR compliance for EU researcher data
+High
+High
+Supabase EU region; DPA in all institutional contracts; data residency option
+Low NLP training data for niche disciplines
+High
+Medium
+Open call for annotated abstract donations; partner with 3 universities in beta
+
+13. Open Questions & Decisions Required
+Should the NER model be open-sourced on Hugging Face to drive community adoption, or kept proprietary as a competitive moat?
+ORCID SSO integration: required for v1.0 or deferred to v1.1? (Researchers strongly prefer ORCID login.)
+Should the Free plan figures be stored server-side (requiring storage cost) or client-side only (browser localStorage)?
+Real-time collaboration: WebSocket via Supabase Realtime or a dedicated Liveblocks integration for richer presence UI?
+Will we pursue an Elsevier / Springer partnership before public launch or post-traction?
+Mobile: is a read-only mobile view of shared figures required for v1.0, or desktop-only acceptable for launch?
+
+14. Appendix
+14.1 Glossary
+Term
+Definition
+Graphical Abstract
+A single-panel figure that visually summarizes the key findings of a research paper, increasingly required by journals.
+NER
+Named Entity Recognition — an NLP task that classifies text tokens into predefined categories (e.g., METHOD, OUTCOME).
+DPI
+Dots Per Inch — print resolution. Journals require ≥300 DPI; screen resolution is typically 72–96 DPI.
+DXA
+Document XML Attribute unit used in .docx; 1 inch = 1440 DXA.
+ORCID
+Open Researcher and Contributor ID — a persistent digital identifier for researchers, widely used in academic publishing.
+Konva.js
+A 2D HTML5 canvas library that provides a high-level API for shapes, events, and animations — used for the figure editor.
+spaCy
+An open-source Python NLP library used for tokenization, POS tagging, dependency parsing, and NER.
+Layout Template
+A predefined spatial arrangement of nodes and edges (e.g., linear flow, cyclic process) applied to the extracted NLP graph.
+
+14.2 Referenced Standards & Specifications
+Nature Publishing Group Figure Guidelines: https://www.nature.com/nature/for-authors/formatting-guide
+ACS Publications Image & File Guidelines: https://publish.acs.org/publish/author_guidelines
+arXiv Submission Guidelines: https://info.arxiv.org/help/submit.html
+WCAG 2.1 Accessibility Guidelines: https://www.w3.org/TR/WCAG21/
+GDPR Compliance (Art. 5, 28, 32): https://gdpr-info.eu
+
+End of Document — SciEtch PRD v1.0
+Confidential. Do not distribute without authorization.
